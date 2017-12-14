@@ -61,7 +61,6 @@ void		parse_arguments(int argc, char **argv,
 	{
 		operand = &operands->entries[i];
 		operand->name = argv[i + num_options + 1];
-		operand->valid = stat(operand->name, &operand->info);
 		operand->valid = !stat(operand->name, &operand->info);
 		i++;
 	}
