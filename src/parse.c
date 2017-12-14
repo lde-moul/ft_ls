@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/12/14 16:56:30 by lde-moul         ###   ########.fr       */
+/*   Updated: 2017/12/14 17:58:50 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ void		parse_arguments(int argc, char **argv,
 
 	num_options = parse_options(argc, argv, options);
 	operands->number = (argc - num_options - 1);
-	operands->entries = malloc(operands->number * sizeof(t_entry)); // !!! check
+	operands->entries = malloc(operands->number * sizeof(t_entry)); // !!! check !!! free
 	i = 0;
 	while (i < operands->number)
 	{
