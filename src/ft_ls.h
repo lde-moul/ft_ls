@@ -25,7 +25,10 @@ typedef struct	s_options
 	int	recursive;
 }				t_options;
 
-void	parse_arguments(int argc, char **argv,
+void			display_entry(t_entry *entry);
+void			display_directory(t_entry *entry);
+void			sort_entries(t_entries *entries);
+void			parse_arguments(int argc, char **argv,
 						t_options *options, t_entries *operands);
 
 #endif
