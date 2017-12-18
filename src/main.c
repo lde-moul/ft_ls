@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include "libft.h"
 #include <stdlib.h>
 
 static void	display_invalid_operands(t_entries *operands, int n)
@@ -30,7 +31,9 @@ static void	display_invalid_operands(t_entries *operands, int n)
 	i = 0;
 	while (i < invalids.number)
 	{
-		display_entry(&invalids.entries[i]);
+		ft_putstr("ft_ls: ");
+		ft_putstr(invalids.entries[i].name);
+		ft_putendl(": No such file or directory");
 		i++;
 	}
 	free(invalids.entries);
