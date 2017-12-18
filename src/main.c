@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/12/14 18:02:59 by lde-moul         ###   ########.fr       */
+/*   Updated: 2017/12/18 16:22:28 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,7 +50,8 @@ static void	display_file_operands(t_entries *operands, int n)
 	i = -1;
 	j = 0;
 	while (++i < operands->number)
-		if (!operands->entries[i].valid)
+		if (operands->entries[i].valid
+		&& (operands->entries[i].info.st_mode & S_IFMT) != S_IFDIR)
 			files.entries[j++] = operands->entries[i];
 	sort_entries(&files);
 	i = 0;
@@ -73,7 +74,8 @@ static void	display_directory_operands(t_entries *operands, int n)
 	i = -1;
 	j = 0;
 	while (++i < operands->number)
-		if (!operands->entries[i].valid)
+		if (operands->entries[i].valid
+		&& (operands->entries[i].info.st_mode & S_IFMT) == S_IFDIR)
 			directories.entries[j++] = operands->entries[i];
 	sort_entries(&directories);
 	i = 0;
