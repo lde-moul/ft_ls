@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/12/14 17:07:47 by lde-moul         ###   ########.fr       */
+/*   Updated: 2017/12/18 17:01:01 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -43,5 +43,17 @@ static void	display_entry_mode(mode_t mode)
 void	display_entry(t_entry *entry)
 {
 	display_entry_mode(entry->info.st_mode);
+	// Display link count
+	// Display user
+	// Display group
+	// Display size
+    // Date
+	// Hour/Year
 	ft_putendl(entry->name);
+}
+
+void	fill_entry_fields(t_entry *entry)
+{
+	entry->
+	entry->info.st_nlink
 }
