@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/12/18 16:22:28 by lde-moul         ###   ########.fr       */
+/*   Updated: 2017/12/21 17:56:40 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -42,6 +42,7 @@ static void	display_invalid_operands(t_entries *operands, int n)
 static void	display_file_operands(t_entries *operands, int n)
 {
 	t_entries	files;
+	int			max_field_sizes[6];
 	int			i;
 	int			j;
 
@@ -56,10 +57,11 @@ static void	display_file_operands(t_entries *operands, int n)
 	sort_entries(&files);
 	i = 0;
 	while (i < files.number)
-	{
-		display_entry(&files.entries[i]);
-		i++;
-	}
+		fill_entry_fields(&files.entries[i++]);
+	get_max_field_sizes(&files, max_field_sizes);
+	i = 0;
+	while (i < files.number)
+		display_entry(&files.entries[i++], max_field_sizes);
 	free(files.entries);
 }
 
@@ -81,7 +83,7 @@ static void	display_directory_operands(t_entries *operands, int n)
 	i = 0;
 	while (i < directories.number)
 	{
-		display_entry(&directories.entries[i]);
+		// display_entry(&directories.entries[i]);
 		i++;
 	}
 	free(directories.entries);

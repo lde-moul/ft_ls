@@ -16,14 +16,8 @@ typedef struct	s_entry
 	struct stat	info;
 	char		*name;
 	int			valid;
-	int			link_size;
-	char		link_text[5];
-	int			owner_size;
-	char		*owner_text;
-	int			group_size;
-	char		*group_text;
-	int			size_size;
-	char		size_text[21];
+	char		*field_text[6];
+	int			field_size[6];
 }				t_entry;
 
 typedef struct	s_entries
@@ -39,7 +33,9 @@ typedef struct	s_options
 	int	recursive;
 }				t_options;
 
-void			display_entry(t_entry *entry);
+void			display_entry(t_entry *entry, int *max_field_sizes);
+void			get_max_field_sizes(t_entries *entries, int *max_field_sizes);
+void			fill_entry_fields(t_entry *entry);
 void			display_directory(t_entry *entry);
 void			sort_entries(t_entries *entries);
 void			parse_arguments(int argc, char **argv,
