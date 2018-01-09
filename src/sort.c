@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:09:53 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/09 16:53:20 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:20:34 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ static int	sorted_by_name_reverse(t_entry *entry1, t_entry *entry2)
 
 static int	sorted_by_time(t_entry *entry1, t_entry *entry2)
 {
-	return (ft_strcmp(entry1->name, entry2->name) < 0);
+	return (entry1->info.st_mtimespec.tv_sec >
+			entry2->info.st_mtimespec.tv_sec);
 }
 
 static int	sorted_by_time_reverse(t_entry *entry1, t_entry *entry2)
 {
-	return (ft_strcmp(entry1->name, entry2->name) > 0);
+	return (entry1->info.st_mtimespec.tv_sec <
+			entry2->info.st_mtimespec.tv_sec);
 }
 
 static void	sort_entries_in_range(t_entry *array, int n,
