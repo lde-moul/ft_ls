@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/09 16:38:59 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/09 17:03:06 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -102,19 +102,23 @@ static void	fill_entry_time_field(t_entry *entry)
 	s = ctime(&entry->info.st_mtimespec.tv_sec);
 	entry->field_text[4] = malloc_or_quit(7); // !!! Free
 	ft_strncpy(entry->field_text[4], s + 4, 6);
+	entry->field_text[4][6] = '\0';
 	entry->field_size[4] = ft_strlen(entry->field_text[4]);
 	if (time(NULL) - entry->info.st_mtimespec.tv_sec < 15552000
 	|| entry->info.st_mtimespec.tv_sec - time(NULL) < 15552000)
 	{
 		entry->field_text[5] = malloc_or_quit(6); // !!! Free
 		ft_strncpy(entry->field_text[5], s + 11, 5);
+		entry->field_text[5][5] = '\0';
+		entry->field_size[5] = 5;
 	}
 	else
 	{
 		entry->field_text[5] = malloc_or_quit(5); // !!! Free
 		ft_strncpy(entry->field_text[5], s + 20, 4);
+		entry->field_text[5][4] = '\0';
+		entry->field_size[5] = 4;
 	}
-	entry->field_size[5] = ft_strlen(entry->field_text[5]);
 }
 
 void		fill_entry_fields(t_entry *entry)
