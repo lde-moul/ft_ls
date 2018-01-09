@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/12/14 17:58:50 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/09 13:10:01 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -22,6 +22,10 @@ static void	parse_option(char c, t_options *options)
 		options->long_format = 1;
 	else if (c == 'R')
 		options->recursive = 1;
+	else if (c == 't')
+		options->sort_by_time = 1;
+	else if (c == 'r')
+		options->sort_reversed = 1;
 	// else
         // !!!
 }

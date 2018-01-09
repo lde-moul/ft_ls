@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/12/21 17:56:40 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/09 14:37:20 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,7 +14,8 @@
 #include "libft.h"
 #include <stdlib.h>
 
-static void	display_invalid_operands(t_entries *operands, int n)
+static void	display_invalid_operands(t_entries *operands, int n,
+										t_options *options)
 {
 	t_entries	invalids;
 	int			i;
@@ -27,7 +28,7 @@ static void	display_invalid_operands(t_entries *operands, int n)
 	while (++i < operands->number)
 		if (!operands->entries[i].valid)
 			invalids.entries[j++] = operands->entries[i];
-	sort_entries(&invalids);
+	sort_entries(&invalids, options);
 	i = 0;
 	while (i < invalids.number)
 	{
@@ -39,7 +40,8 @@ static void	display_invalid_operands(t_entries *operands, int n)
 	free(invalids.entries);
 }
 
-static void	display_file_operands(t_entries *operands, int n)
+static void	display_file_operands(t_entries *operands, int n,
+										t_options *options)
 {
 	t_entries	files;
 	int			max_field_sizes[6];
@@ -54,7 +56,7 @@ static void	display_file_operands(t_entries *operands, int n)
 		if (operands->entries[i].valid
 		&& (operands->entries[i].info.st_mode & S_IFMT) != S_IFDIR)
 			files.entries[j++] = operands->entries[i];
-	sort_entries(&files);
+	sort_entries(&files, options);
 	i = 0;
 	while (i < files.number)
 		fill_entry_fields(&files.entries[i++]);
@@ -65,7 +67,8 @@ static void	display_file_operands(t_entries *operands, int n)
 	free(files.entries);
 }
 
-static void	display_directory_operands(t_entries *operands, int n)
+static void	display_directory_operands(t_entries *operands, int n,
+										t_options *options)
 {
 	t_entries	directories;
 	int			i;
@@ -79,7 +82,7 @@ static void	display_directory_operands(t_entries *operands, int n)
 		if (operands->entries[i].valid
 		&& (operands->entries[i].info.st_mode & S_IFMT) == S_IFDIR)
 			directories.entries[j++] = operands->entries[i];
-	sort_entries(&directories);
+	sort_entries(&directories, options);
 	i = 0;
 	while (i < directories.number)
 	{
@@ -89,7 +92,7 @@ static void	display_directory_operands(t_entries *operands, int n)
 	free(directories.entries);
 }
 
-static void	display_operands(t_entries *operands)
+static void	display_operands(t_entries *operands, t_options *options)
 {
 	int			num_invalids;
 	int			num_files;
@@ -110,9 +113,9 @@ static void	display_operands(t_entries *operands)
 			num_files++;
 		i++;
 	}
-	display_invalid_operands(operands, num_invalids);
-	display_file_operands(operands, num_files);
-	display_directory_operands(operands, num_dirs);
+	display_invalid_operands(operands, num_invalids, options);
+	display_file_operands(operands, num_files, options);
+	display_directory_operands(operands, num_dirs, options);
 }
 
 int			main(int argc, char **argv)
@@ -121,7 +124,7 @@ int			main(int argc, char **argv)
 	t_entries	operands;
 
 	parse_arguments(argc, argv, &options, &operands);
-	display_operands(&operands);
+	display_operands(&operands, &options);
 	free(operands.entries);
 	return (0);
 }
