@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2017/12/21 18:01:13 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/09 16:38:59 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -54,16 +54,19 @@ void		display_entry(t_entry *entry, int *max_field_sizes)
 	i = 0;
 	while (i < 6)
 	{
-		ft_putstr(entry->field_text[i]);
+		if (i != 3)
+			ft_putstr(entry->field_text[i]);
 		j = -1;
-		while (j < max_field_sizes[i] - entry->field_size[i])
+		while (j < max_field_sizes[i] - entry->field_size[i] - 1)
 		{
 			ft_putchar(' ');
 			j++;
 		}
+		if (i == 3)
+			ft_putstr(entry->field_text[i]);
+		ft_putchar(' ');
 		i++;
 	}
-	ft_putchar(' ');
 	ft_putendl(entry->name);
 }
 
