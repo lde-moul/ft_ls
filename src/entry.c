@@ -97,18 +97,18 @@ static void	fill_entry_time_field(t_entry *entry)
 	char	*s;
 
 	s = ctime(&entry->info.st_mtimespec.tv_sec);
-	entry->field_text[4] = malloc(7); // !!! Check // !!! Free
+	entry->field_text[4] = malloc_or_quit(7); // !!! Free
 	ft_strncpy(entry->field_text[4], s + 4, 6);
 	entry->field_size[4] = ft_strlen(entry->field_text[4]);
 	if (time(NULL) - entry->info.st_mtimespec.tv_sec < 15552000
 	|| entry->info.st_mtimespec.tv_sec - time(NULL) < 15552000)
 	{
-		entry->field_text[5] = malloc(6); // !!! Check // !!! Free
+		entry->field_text[5] = malloc_or_quit(6); // !!! Free
 		ft_strncpy(entry->field_text[5], s + 11, 5);
 	}
 	else
 	{
-		entry->field_text[5] = malloc(5); // !!! Check // !!! Free
+		entry->field_text[5] = malloc_or_quit(5); // !!! Free
 		ft_strncpy(entry->field_text[5], s + 20, 4);
 	}
 	entry->field_size[5] = ft_strlen(entry->field_text[5]);

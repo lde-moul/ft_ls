@@ -55,7 +55,7 @@ void		parse_arguments(int argc, char **argv,
 
 	num_options = parse_options(argc, argv, options);
 	operands->number = (argc - num_options - 1);
-	operands->entries = malloc(operands->number * sizeof(t_entry)); // !!! check !!! free
+	operands->entries = malloc_or_quit(operands->number * sizeof(t_entry)); // !!! free
 	i = 0;
 	while (i < operands->number)
 	{

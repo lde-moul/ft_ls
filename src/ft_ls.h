@@ -40,5 +40,6 @@ void			display_directory(t_entry *entry);
 void			sort_entries(t_entries *entries);
 void			parse_arguments(int argc, char **argv,
 								t_options *options, t_entries *operands);
+void			*malloc_or_quit(size_t size);
 
 #endif

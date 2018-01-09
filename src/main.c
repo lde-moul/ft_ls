@@ -21,7 +21,7 @@ static void	display_invalid_operands(t_entries *operands, int n)
 	int			j;
 
 	invalids.number = n;
-	invalids.entries = malloc(n * sizeof(t_entry)); // !!! check
+	invalids.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
 	j = 0;
 	while (++i < operands->number)
@@ -47,7 +47,7 @@ static void	display_file_operands(t_entries *operands, int n)
 	int			j;
 
 	files.number = n;
-	files.entries = malloc(n * sizeof(t_entry)); // !!! check
+	files.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
 	j = 0;
 	while (++i < operands->number)
@@ -72,7 +72,7 @@ static void	display_directory_operands(t_entries *operands, int n)
 	int			j;
 
 	directories.number = n;
-	directories.entries = malloc(n * sizeof(t_entry)); // !!! check
+	directories.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
 	j = 0;
 	while (++i < operands->number)
