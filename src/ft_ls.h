@@ -56,5 +56,6 @@ void			parse_arguments(int argc, char **argv,
 								t_options *options, t_entries *operands);
 void			error(char *s);
 void			*malloc_or_quit(size_t size);
+void			display_spaces(int n);
 
 #endif

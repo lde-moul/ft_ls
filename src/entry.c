@@ -47,7 +47,6 @@ static void	display_entry_mode(mode_t mode)
 void		display_entry(t_entry *entry, int *max_field_sizes)
 {
 	int	i;
-	int	j;
 
 	display_entry_mode(entry->info.st_mode);
 	ft_putchar(' ');
@@ -56,12 +55,7 @@ void		display_entry(t_entry *entry, int *max_field_sizes)
 	{
 		if (i != 3)
 			ft_putstr(entry->field_text[i]);
-		j = -1;
-		while (j < max_field_sizes[i] - entry->field_size[i] - 1)
-		{
-			ft_putchar(' ');
-			j++;
-		}
+		display_spaces(max_field_sizes[i] - entry->field_size[i]);
 		if (i == 3)
 			ft_putstr(entry->field_text[i]);
 		ft_putchar(' ');
