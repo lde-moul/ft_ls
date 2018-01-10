@@ -10,7 +10,9 @@
 /*                                                                            */
 /* ************************************************************************** */
 
+#include "ft_ls.h"
 #include "libft.h"
+#include <unistd.h>
 
 void	display_spaces(int n)
 {
@@ -22,4 +24,18 @@ void	display_spaces(int n)
 		ft_putchar(' ');
 		i++;
 	}
+}
+
+void	display_entry_link_target(t_entry *entry)
+{
+	char	*target_name;
+	ssize_t	n;
+
+	target_name = malloc_or_quit(entry->info.st_size + 1);
+	n = readlink(entry->name, target_name, entry->info.st_size);
+	if (n != entry->info.st_size)
+		error("readlink failed");
+	target_name[n] = '\0';
+	ft_putstr(target_name);
+	free(target_name);
 }

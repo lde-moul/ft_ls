@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/09 13:10:12 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/10 16:57:29 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,5 +57,6 @@ void			parse_arguments(int argc, char **argv,
 void			error(char *s);
 void			*malloc_or_quit(size_t size);
 void			display_spaces(int n);
+void			display_entry_link_target(t_entry *entry);
 
 #endif

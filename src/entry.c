@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/09 17:03:06 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:04:29 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,13 @@ void		display_entry(t_entry *entry, int *max_field_sizes)
 		ft_putchar(' ');
 		i++;
 	}
-	ft_putendl(entry->name);
+	ft_putstr(entry->name);
+	if ((entry->info.st_mode & S_IFMT) == S_IFLNK)
+	{
+		ft_putstr(" -> ");
+		display_entry_link_target(entry);
+	}
+	ft_putchar('\n');
 }
 
 void		get_max_field_sizes(t_entries *entries, int *max_field_sizes)
