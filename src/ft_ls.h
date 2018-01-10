@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/10 16:57:29 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/10 19:19:45 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -36,6 +36,7 @@ typedef struct	s_entries
 {
 	t_entry	*entries;
 	int		number;
+	int		allocated;
 }				t_entries;
 
 typedef struct	s_options
@@ -51,7 +52,7 @@ void			display_entry(t_entry *entry, int *max_field_sizes);
 void			display_entries(t_entries *entries, t_options *options);
 void			free_entries(t_entries *entries);
 void			fill_entry_fields(t_entry *entry);
-void			display_directory(t_entry *entry);
+void			display_directory(t_entry *entry, t_options *options);
 void			sort_entries(t_entries *entries, t_options *options);
 void			parse_arguments(int argc, char **argv,
 								t_options *options, t_entries *operands);
