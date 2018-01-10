@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/10 17:04:29 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/10 19:17:40 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -75,21 +75,21 @@ static void	fill_entry_time_field(t_entry *entry)
 	char	*s;
 
 	s = ctime(&entry->info.st_mtimespec.tv_sec);
-	entry->field_text[4] = malloc_or_quit(7); // !!! Free
+	entry->field_text[4] = malloc_or_quit(7);
 	ft_strncpy(entry->field_text[4], s + 4, 6);
 	entry->field_text[4][6] = '\0';
 	entry->field_size[4] = ft_strlen(entry->field_text[4]);
 	if (time(NULL) - entry->info.st_mtimespec.tv_sec < 15552000
 	|| entry->info.st_mtimespec.tv_sec - time(NULL) < 15552000)
 	{
-		entry->field_text[5] = malloc_or_quit(6); // !!! Free
+		entry->field_text[5] = malloc_or_quit(6);
 		ft_strncpy(entry->field_text[5], s + 11, 5);
 		entry->field_text[5][5] = '\0';
 		entry->field_size[5] = 5;
 	}
 	else
 	{
-		entry->field_text[5] = malloc_or_quit(5); // !!! Free
+		entry->field_text[5] = malloc_or_quit(5);
 		ft_strncpy(entry->field_text[5], s + 20, 4);
 		entry->field_text[5][4] = '\0';
 		entry->field_size[5] = 4;
@@ -101,17 +101,25 @@ void		fill_entry_fields(t_entry *entry)
 	struct passwd	*user;
 	struct group	*group;
 
-	entry->field_text[0] = ft_itoa(entry->info.st_nlink); // !!! Check // !!! Free
+	entry->field_text[0] = ft_itoa(entry->info.st_nlink);
+	if (!entry->field_text[0])
+		error("Out of memory");
 	entry->field_size[0] = ft_strlen(entry->field_text[0]);
 	user = getpwuid(entry->info.st_uid);
 	entry->field_text[1] = user ?
 		ft_strdup(user->pw_name) : ft_itoa(entry->info.st_uid);
+	if (!entry->field_text[1])
+		error("Out of memory");
 	entry->field_size[1] = ft_strlen(entry->field_text[1]);
 	group = getgrgid(entry->info.st_gid);
 	entry->field_text[2] = group ?
 		ft_strdup(group->gr_name) : ft_itoa(entry->info.st_gid);
+	if (!entry->field_text[2])
+		error("Out of memory");
 	entry->field_size[2] = ft_strlen(entry->field_text[2]);
 	entry->field_text[3] = ft_itoa(entry->info.st_size); // !!! long
+	if (!entry->field_text[3])
+		error("Out of memory");
 	entry->field_size[3] = ft_strlen(entry->field_text[3]);
 	fill_entry_time_field(entry);
 }
