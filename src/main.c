@@ -44,7 +44,6 @@ static void	display_file_operands(t_entries *operands, int n,
 										t_options *options)
 {
 	t_entries	files;
-	int			max_field_sizes[6];
 	int			i;
 	int			j;
 
@@ -56,15 +55,7 @@ static void	display_file_operands(t_entries *operands, int n,
 		if (operands->entries[i].valid
 		&& (operands->entries[i].info.st_mode & S_IFMT) != S_IFDIR)
 			files.entries[j++] = operands->entries[i];
-	sort_entries(&files, options);
-	i = 0;
-	while (i < files.number)
-		fill_entry_fields(&files.entries[i++]);
-	get_max_field_sizes(&files, max_field_sizes);
-	i = 0;
-	while (i < files.number)
-		display_entry(&files.entries[i++], max_field_sizes);
-	free(files.entries);
+	display_entries(&files, options);
 }
 
 static void	display_directory_operands(t_entries *operands, int n,

@@ -6,7 +6,7 @@
 #    By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 16:24:36 by lde-moul          #+#    #+#              #
-#    Updated: 2018/01/10 16:47:47 by lde-moul         ###   ########.fr        #
+#    Updated: 2018/01/10 18:39:38 by lde-moul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,6 +21,7 @@ OBJDIR = obj
 
 SRCBASE = main.c\
 		  entry.c\
+		  entries.c\
 		  dir.c\
 		  sort.c\
 		  parse.c\

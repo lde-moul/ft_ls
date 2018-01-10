@@ -70,31 +70,6 @@ void		display_entry(t_entry *entry, int *max_field_sizes)
 	ft_putchar('\n');
 }
 
-void		get_max_field_sizes(t_entries *entries, int *max_field_sizes)
-{
-	int	i;
-	int	j;
-
-	i = 0;
-	while (i < 6)
-	{
-		max_field_sizes[i] = 0;
-		i++;
-	}
-	i = 0;
-	while (i < 6)
-	{
-		j = 0;
-		while (j < entries->number)
-		{
-			if (max_field_sizes[i] < entries->entries[j].field_size[i])
-				max_field_sizes[i] = entries->entries[j].field_size[i];
-			j++;
-		}
-		i++;
-	}
-}
-
 static void	fill_entry_time_field(t_entry *entry)
 {
 	char	*s;
