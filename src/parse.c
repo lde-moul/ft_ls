@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/09 13:10:01 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/10 15:38:48 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ void		parse_arguments(int argc, char **argv,
 	{
 		operand = &operands->entries[i];
 		operand->name = argv[i + num_options + 1];
-		operand->valid = !stat(operand->name, &operand->info);
+		operand->valid = !lstat(operand->name, &operand->info);
 		i++;
 	}
 }
