@@ -11,6 +11,7 @@
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include <stdlib.h>
 
 static void	get_max_field_sizes(t_entries *entries, int *max_field_sizes)
 {
@@ -54,4 +55,24 @@ void		display_entries(t_entries *entries, t_options *options)
 			display_entry(&entries->entries[i], max_field_sizes);
 		i++;
 	}
+}
+
+void		free_entries(t_entries *entries)
+{
+	int	i;
+	int	j;
+
+	i = 0;
+	while (i < entries->number)
+	{
+		free(entries->entries[i].name);
+		j = 0;
+		while (j < 6)
+		{
+			free(entries->entries[i].field_text[j]);
+			j++;
+		}
+		i++;
+	}
+	free(entries->entries);
 }

@@ -37,7 +37,7 @@ static void	display_invalid_operands(t_entries *operands, int n,
 		ft_putendl(": No such file or directory");
 		i++;
 	}
-	free(invalids.entries);
+	free_entries(&invalids);
 }
 
 static void	display_file_operands(t_entries *operands, int n,
@@ -56,6 +56,7 @@ static void	display_file_operands(t_entries *operands, int n,
 		&& (operands->entries[i].info.st_mode & S_IFMT) != S_IFDIR)
 			files.entries[j++] = operands->entries[i];
 	display_entries(&files, options);
+	free_entries(&files);
 }
 
 static void	display_directory_operands(t_entries *operands, int n,
@@ -80,7 +81,7 @@ static void	display_directory_operands(t_entries *operands, int n,
 		// display_entry(&directories.entries[i]);
 		i++;
 	}
-	free(directories.entries);
+	free_entries(&directories);
 }
 
 static void	display_operands(t_entries *operands, t_options *options)

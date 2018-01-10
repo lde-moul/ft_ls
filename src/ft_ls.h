@@ -49,6 +49,7 @@ typedef struct	s_options
 
 void			display_entry(t_entry *entry, int *max_field_sizes);
 void			display_entries(t_entries *entries, t_options *options);
+void			free_entries(t_entries *entries);
 void			fill_entry_fields(t_entry *entry);
 void			display_directory(t_entry *entry);
 void			sort_entries(t_entries *entries, t_options *options);
