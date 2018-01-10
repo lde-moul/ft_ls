@@ -6,13 +6,14 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:47:40 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/10 17:00:39 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/10 17:12:11 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "libft.h"
 #include <unistd.h>
+#include <stdlib.h>
 
 void	display_spaces(int n)
 {
