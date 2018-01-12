@@ -60,5 +60,6 @@ void			error(char *s);
 void			*malloc_or_quit(size_t size);
 void			display_spaces(int n);
 void			display_entry_link_target(t_entry *entry);
+const char		*file_name_only(const char *path);
 
 #endif

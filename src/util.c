@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:47:40 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/10 17:12:11 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/12 16:24:41 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -15,7 +15,7 @@
 #include <unistd.h>
 #include <stdlib.h>
 
-void	display_spaces(int n)
+void		display_spaces(int n)
 {
 	int	i;
 
@@ -27,7 +27,7 @@ void	display_spaces(int n)
 	}
 }
 
-void	display_entry_link_target(t_entry *entry)
+void		display_entry_link_target(t_entry *entry)
 {
 	char	*target_name;
 	ssize_t	n;
@@ -39,4 +39,18 @@ void	display_entry_link_target(t_entry *entry)
 	target_name[n] = '\0';
 	ft_putstr(target_name);
 	free(target_name);
+}
+
+const char	*file_name_only(const char *path)
+{
+	const char	*c;
+
+	c = path;
+	while (*c)
+	{
+		if (*c == '/')
+			path = c;
+		c++;
+	}
+	return (path + 1);
 }
