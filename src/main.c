@@ -37,9 +37,10 @@ static void	display_invalid_operands(t_entries *operands, int n,
 		ft_putstr("ft_ls: ");
 		ft_putstr(invalids.entries[i].name);
 		ft_putendl(": No such file or directory");
+		free(invalids.entries[i].name);
 		i++;
 	}
-	free_entries(&invalids);
+	free(invalids.entries);
 }
 
 static void	display_file_operands(t_entries *operands, int n,
@@ -85,9 +86,10 @@ static void	display_directory_operands(t_entries *operands, int n,
 	while (i < directories.number)
 	{
 		display_directory(directories.entries[i].name, options);
+		free(directories.entries[i].name);
 		i++;
 	}
-	free_entries(&directories);
+	free(directories.entries);
 }
 
 static void	display_operands(t_entries *operands, t_options *options)
