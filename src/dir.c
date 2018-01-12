@@ -59,8 +59,8 @@ void		display_directory(t_entry *entry, t_options *options)
 	int			blocks;
 	int			i;
 
-	load_directory(entry->name, &entries);
-	ft_putstr(entry->name);
+	load_directory(name, &entries);
+	ft_putstr(name);
 	ft_putendl(":");
 	blocks = 0;
 	i = 0;
