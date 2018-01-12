@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/10 19:05:19 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/12 17:55:40 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,8 @@ static void	display_invalid_operands(t_entries *operands, int n,
 	int			i;
 	int			j;
 
+	if (n == 0)
+		return ;
 	invalids.number = n;
 	invalids.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
@@ -47,6 +49,8 @@ static void	display_file_operands(t_entries *operands, int n,
 	int			i;
 	int			j;
 
+	if (n == 0)
+		return ;
 	files.number = n;
 	files.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
@@ -66,6 +70,8 @@ static void	display_directory_operands(t_entries *operands, int n,
 	int			i;
 	int			j;
 
+	if (n == 0)
+		return ;
 	directories.number = n;
 	directories.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
@@ -78,7 +84,7 @@ static void	display_directory_operands(t_entries *operands, int n,
 	i = 0;
 	while (i < directories.number)
 	{
-		display_directory(&directories.entries[i], options);
+		display_directory(directories.entries[i].name, options);
 		i++;
 	}
 	free_entries(&directories);
@@ -86,10 +92,10 @@ static void	display_directory_operands(t_entries *operands, int n,
 
 static void	display_operands(t_entries *operands, t_options *options)
 {
-	int			num_invalids;
-	int			num_files;
-	int			num_dirs;
-	int			i;
+	int	num_invalids;
+	int	num_files;
+	int	num_dirs;
+	int	i;
 
 	num_invalids = 0;
 	num_files = 0;
