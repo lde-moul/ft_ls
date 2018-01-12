@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/10 19:12:14 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/12 18:12:32 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -83,6 +83,9 @@ void		display_directory(const char *name, t_options *options)
 	int			i;
 
 	load_directory(name, &entries);
+	if (options->not_first)
+		ft_putchar('\n');
+	options->not_first = 1;
 	ft_putstr(name);
 	ft_putendl(":");
 	blocks = 0;

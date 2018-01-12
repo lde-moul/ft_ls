@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/10 19:19:45 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/12 17:49:20 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,8 +44,9 @@ typedef struct	s_options
 	int	all;
 	int	long_format;
 	int	recursive;
-	int sort_by_time;
-	int sort_reversed;
+	int	sort_by_time;
+	int	sort_reversed;
+	int	not_first;
 }				t_options;
 
 void			display_entry(t_entry *entry, int *max_field_sizes);

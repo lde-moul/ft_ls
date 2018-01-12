@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/12 18:10:57 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/12 18:54:32 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ static void	display_invalid_operands(t_entries *operands, int n,
 
 	if (n == 0)
 		return ;
+	options->not_first = 1;
 	invalids.number = n;
 	invalids.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
@@ -52,6 +53,7 @@ static void	display_file_operands(t_entries *operands, int n,
 
 	if (n == 0)
 		return ;
+	options->not_first = 1;
 	files.number = n;
 	files.entries = malloc_or_quit(n * sizeof(t_entry));
 	i = -1;
