@@ -56,10 +56,22 @@ static void load_directory(const char *name, t_entries *entries)
 void		display_directory(t_entry *entry, t_options *options)
 {
 	t_entries	entries;
+	int			blocks;
+	int			i;
 
+	load_directory(entry->name, &entries);
 	ft_putstr(entry->name);
 	ft_putendl(":");
-	load_directory(entry->name, &entries);
+	blocks = 0;
+	i = 0;
+	while (i < entries.number)
+	{
+		blocks += entries.entries[i].info.st_blocks;
+		i++;
+	}
+	ft_putstr("total ");
+	ft_putnbr(blocks);
+	ft_putchar('\n');
 	display_entries(&entries, options);
 	free_entries(&entries);
 }
