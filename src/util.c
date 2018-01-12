@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:47:40 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/12 16:24:41 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/12 17:17:16 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,8 +49,8 @@ const char	*file_name_only(const char *path)
 	while (*c)
 	{
 		if (*c == '/')
-			path = c;
+			path = c + 1;
 		c++;
 	}
-	return (path + 1);
+	return (path);
 }
