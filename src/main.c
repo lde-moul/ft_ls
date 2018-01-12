@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/12 17:55:40 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/12 18:10:57 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -123,6 +123,7 @@ int			main(int argc, char **argv)
 
 	parse_arguments(argc, argv, &options, &operands);
 	display_operands(&operands, &options);
-	free(operands.entries);
+	if (operands.number)
+		free(operands.entries);
 	return (0);
 }
