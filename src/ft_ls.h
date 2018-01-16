@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 18:48:55 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 19:03:28 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -48,6 +48,7 @@ typedef struct	s_options
 	int	sort_reversed;
 	int	ctime;
 	int	btime;
+	int	complete_time;
 	int	not_first;
 }				t_options;
 

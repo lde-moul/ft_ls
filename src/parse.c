@@ -6,13 +6,22 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 18:45:20 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 19:18:35 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
 #include "libft.h"
 #include <stdlib.h>
+
+static void	usage(char c)
+{
+	ft_putstr_fd("ft_ls: illegal option -- ", 2);
+	ft_putchar_fd(c, 2);
+	ft_putchar_fd('\n', 2);
+	ft_putendl_fd("usage: ft_ls [-RSUaclrt] [file ...]", 2);
+	exit(1);
+}
 
 static void	parse_option(char c, t_options *options)
 {
@@ -32,14 +41,10 @@ static void	parse_option(char c, t_options *options)
 		options->ctime = 1;
 	else if (c == 'U')
 		options->btime = 1;
+	else if (c == 'T')
+		options->complete_time = 1;
 	else
-	{
-		ft_putstr_fd("ft_ls: illegal option -- ", 2);
-		ft_putchar_fd(c, 2);
-		ft_putchar_fd('\n', 2);
-		ft_putendl_fd("usage: ft_ls [-RSUaclrt] [file ...]", 2);
-		exit(1);
-	}
+		usage(c);
 }
 
 static int	parse_options(int argc, char **argv, t_options *options)
