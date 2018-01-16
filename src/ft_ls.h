@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:45:56 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:59:43 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,6 +44,7 @@ typedef struct	s_options
 	int	long_format;
 	int	recursive;
 	int	sort_by_time;
+	int	sort_by_size;
 	int	sort_reversed;
 	int	not_first;
 }				t_options;
@@ -56,6 +57,8 @@ void			display_directory(const char *name, t_options *options);
 void			sort_entries(t_entries *entries, t_options *options);
 int				sorted_by_time(t_entry *entry1, t_entry *entry2);
 int				sorted_by_time_reverse(t_entry *entry1, t_entry *entry2);
+int				sorted_by_size(t_entry *entry1, t_entry *entry2);
+int				sorted_by_size_reverse(t_entry *entry1, t_entry *entry2);
 void			parse_arguments(int argc, char **argv,
 								t_options *options, t_entries *operands);
 void			error(char *s);

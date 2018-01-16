@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:28:23 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:55:47 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -26,12 +26,14 @@ static void	parse_option(char c, t_options *options)
 		options->sort_by_time = 1;
 	else if (c == 'r')
 		options->sort_reversed = 1;
+	else if (c == 'S')
+		options->sort_by_size = 1;
 	else
 	{
 		ft_putstr_fd("ft_ls: illegal option -- ", 2);
 		ft_putchar_fd(c, 2);
 		ft_putchar_fd('\n', 2);
-		ft_putendl_fd("usage: ft_ls [-Ralrt] [file ...]", 2);
+		ft_putendl_fd("usage: ft_ls [-RSalrt] [file ...]", 2);
 		exit(1);
 	}
 }
