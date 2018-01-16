@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 18:35:53 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 20:11:23 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,8 +61,7 @@ static void	display_file_operands(t_entries *operands, int n,
 	while (++i < operands->number)
 		if (operands->entries[i].valid
 		&& (operands->entries[i].info.st_mode & S_IFMT) != S_IFDIR
-		&& (file_name_only(operands->entries[i].name)[0] != '.'
-		|| options->all))
+		&& name_displayable(file_name_only(operands->entries[i].name), options))
 			files.entries[j++] = operands->entries[i];
 	display_entries(&files, options);
 	free_entries(&files);
@@ -113,8 +112,8 @@ static void	display_operands(t_entries *operands, t_options *options)
 			num_invalids++;
 		else if ((operands->entries[i].info.st_mode & S_IFMT) == S_IFDIR)
 			num_dirs++;
-		else if (file_name_only(operands->entries[i].name)[0] != '.'
-		|| options->all)
+		else if (name_displayable(file_name_only(operands->entries[i].name),
+									options))
 			num_files++;
 		i++;
 	}

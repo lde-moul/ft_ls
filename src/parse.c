@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 19:18:35 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 19:35:38 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -27,6 +27,8 @@ static void	parse_option(char c, t_options *options)
 {
 	if (c == 'a')
 		options->all = 1;
+	else if (c == 'A')
+		options->all_normal = 1;
 	else if (c == 'l')
 		options->long_format = 1;
 	else if (c == 'R')

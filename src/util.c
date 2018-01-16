@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 16:47:40 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/12 17:17:16 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 20:10:08 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -53,4 +53,14 @@ const char	*file_name_only(const char *path)
 		c++;
 	}
 	return (path);
+}
+
+int			name_displayable(const char *name, t_options *options)
+{
+	if (name[0] != '.')
+		return (1);
+	if (!(options->all || options->all_normal))
+		return (0);
+	return (!options->all_normal
+	|| (ft_strcmp(name, ".") && ft_strcmp(name, "..")));
 }

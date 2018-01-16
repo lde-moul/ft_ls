@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:40:23 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 20:07:43 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ static int	load_directory(const char *name, t_entries *entries,
 	entries->allocated = 1024;
 	entries->entries = malloc_or_quit(1024 * sizeof(t_entry));
 	while ((dir_entry = readdir(dir)))
-		if (dir_entry->d_name[0] != '.' || options->all)
+		if (name_displayable(dir_entry->d_name, options))
 			add_dir_entry(dir_entry, entries, name);
 	closedir(dir);
 	return (1);

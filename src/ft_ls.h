@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 19:03:28 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 20:03:42 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,6 +41,7 @@ typedef struct	s_entries
 typedef struct	s_options
 {
 	int	all;
+	int	all_normal;
 	int	long_format;
 	int	recursive;
 	int	sort_by_time;
@@ -65,6 +66,7 @@ void			*malloc_or_quit(size_t size);
 void			display_spaces(int n);
 void			display_entry_link_target(t_entry *entry);
 const char		*file_name_only(const char *path);
+int				name_displayable(const char *name, t_options *options);
 
 int				sorted_by_mtime(t_entry *entry1, t_entry *entry2);
 int				sorted_by_mtime_reverse(t_entry *entry1, t_entry *entry2);
