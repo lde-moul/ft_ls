@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:38:26 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:59:27 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,7 +17,7 @@
 #include <time.h>
 #include <stdlib.h>
 
-static void	display_entry_mode(mode_t mode)
+static void		display_entry_mode(mode_t mode)
 {
 	if ((mode & S_IFMT) == S_IFREG)
 		ft_putchar('-');
@@ -44,7 +44,7 @@ static void	display_entry_mode(mode_t mode)
 	ft_putchar(mode & S_IXOTH ? 'x' : '-');
 }
 
-void		display_entry(t_entry *entry, int *max_field_sizes)
+void			display_entry(t_entry *entry, int *max_field_sizes)
 {
 	int	i;
 
@@ -70,17 +70,10 @@ void		display_entry(t_entry *entry, int *max_field_sizes)
 	ft_putchar('\n');
 }
 
-static void	fill_entry_time_field(t_entry *entry)
+static	void	fill_entry_time_or_year_field(t_entry *entry, time_t t, char *s)
 {
-	char	*s;
-
-	s = ctime(&entry->info.st_mtimespec.tv_sec);
-	entry->field_text[4] = malloc_or_quit(7);
-	ft_strncpy(entry->field_text[4], s + 4, 6);
-	entry->field_text[4][6] = '\0';
-	entry->field_size[4] = ft_strlen(entry->field_text[4]);
-	if (time(NULL) - entry->info.st_mtimespec.tv_sec < 15552000
-	&& entry->info.st_mtimespec.tv_sec - time(NULL) < 15552000)
+	if (time(NULL) - t < 15552000
+	&& t - time(NULL) < 15552000)
 	{
 		entry->field_text[5] = malloc_or_quit(6);
 		ft_strncpy(entry->field_text[5], s + 11, 5);
@@ -96,7 +89,26 @@ static void	fill_entry_time_field(t_entry *entry)
 	}
 }
 
-void		fill_entry_fields(t_entry *entry)
+static void		fill_entry_time_field(t_entry *entry, t_options *options)
+{
+	time_t	t;
+	char	*s;
+
+	if (options->ctime)
+		t = entry->info.st_ctimespec.tv_sec;
+	else if (options->btime)
+		t = entry->info.st_birthtimespec.tv_sec;
+	else
+		t = entry->info.st_mtimespec.tv_sec;
+	s = ctime(&t);
+	entry->field_text[4] = malloc_or_quit(7);
+	ft_strncpy(entry->field_text[4], s + 4, 6);
+	entry->field_text[4][6] = '\0';
+	entry->field_size[4] = ft_strlen(entry->field_text[4]);
+	fill_entry_time_or_year_field(entry, t, s);
+}
+
+void			fill_entry_fields(t_entry *entry, t_options *options)
 {
 	struct passwd	*user;
 	struct group	*group;
@@ -121,5 +133,5 @@ void		fill_entry_fields(t_entry *entry)
 	if (!entry->field_text[3])
 		error("Out of memory");
 	entry->field_size[3] = ft_strlen(entry->field_text[3]);
-	fill_entry_time_field(entry);
+	fill_entry_time_field(entry, options);
 }

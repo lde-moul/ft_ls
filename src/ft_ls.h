@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:59:43 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:48:55 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,19 +46,17 @@ typedef struct	s_options
 	int	sort_by_time;
 	int	sort_by_size;
 	int	sort_reversed;
+	int	ctime;
+	int	btime;
 	int	not_first;
 }				t_options;
 
 void			display_entry(t_entry *entry, int *max_field_sizes);
 void			display_entries(t_entries *entries, t_options *options);
 void			free_entries(t_entries *entries);
-void			fill_entry_fields(t_entry *entry);
+void			fill_entry_fields(t_entry *entry, t_options *options);
 void			display_directory(const char *name, t_options *options);
 void			sort_entries(t_entries *entries, t_options *options);
-int				sorted_by_time(t_entry *entry1, t_entry *entry2);
-int				sorted_by_time_reverse(t_entry *entry1, t_entry *entry2);
-int				sorted_by_size(t_entry *entry1, t_entry *entry2);
-int				sorted_by_size_reverse(t_entry *entry1, t_entry *entry2);
 void			parse_arguments(int argc, char **argv,
 								t_options *options, t_entries *operands);
 void			error(char *s);
@@ -66,5 +64,14 @@ void			*malloc_or_quit(size_t size);
 void			display_spaces(int n);
 void			display_entry_link_target(t_entry *entry);
 const char		*file_name_only(const char *path);
+
+int				sorted_by_mtime(t_entry *entry1, t_entry *entry2);
+int				sorted_by_mtime_reverse(t_entry *entry1, t_entry *entry2);
+int				sorted_by_ctime(t_entry *entry1, t_entry *entry2);
+int				sorted_by_ctime_reverse(t_entry *entry1, t_entry *entry2);
+int				sorted_by_btime(t_entry *entry1, t_entry *entry2);
+int				sorted_by_btime_reverse(t_entry *entry1, t_entry *entry2);
+int				sorted_by_size(t_entry *entry1, t_entry *entry2);
+int				sorted_by_size_reverse(t_entry *entry1, t_entry *entry2);
 
 #endif

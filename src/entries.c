@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 18:39:17 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:06:45 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:48:06 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -49,7 +49,7 @@ void		display_entries(t_entries *entries, t_options *options)
 	{
 		i = 0;
 		while (i < entries->number)
-			fill_entry_fields(&entries->entries[i++]);
+			fill_entry_fields(&entries->entries[i++], options);
 		get_max_field_sizes(entries, max_field_sizes);
 		i = 0;
 		while (i < entries->number)

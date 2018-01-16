@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:09:53 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:59:19 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 18:43:07 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,17 +61,19 @@ void		sort_entries(t_entries *entries, t_options *options)
 		sorted = options->sort_reversed ?
 			sorted_by_size_reverse : sorted_by_size;
 	else if (options->sort_by_time)
-		sorted = options->sort_reversed ?
-			sorted_by_time_reverse : sorted_by_time;
+	{
+		if (options->ctime)
+			sorted = options->sort_reversed ?
+				sorted_by_ctime_reverse : sorted_by_ctime;
+		else if (options->btime)
+			sorted = options->sort_reversed ?
+				sorted_by_btime_reverse : sorted_by_btime;
+		else
+			sorted = options->sort_reversed ?
+				sorted_by_mtime_reverse : sorted_by_mtime;
+	}
 	else
 		sorted = options->sort_reversed ?
 			sorted_by_name_reverse : sorted_by_name;
-
-	// if (options->sort_reversed)
-	// 	sorted = options->sort_by_time ?
-	// 		sorted_by_time_reverse : sorted_by_name_reverse;
-	// else
-	// 	sorted = options->sort_by_time ?
-	// 		sorted_by_time : sorted_by_name;
 	sort_entries_in_range(entries->entries, entries->number, sorted);
 }

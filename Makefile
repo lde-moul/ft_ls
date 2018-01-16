@@ -6,7 +6,7 @@
 #    By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2017/12/14 16:24:36 by lde-moul          #+#    #+#              #
-#    Updated: 2018/01/16 17:43:40 by lde-moul         ###   ########.fr        #
+#    Updated: 2018/01/16 18:23:29 by lde-moul         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -25,6 +25,7 @@ SRCBASE = main.c\
 		  dir.c\
 		  sort.c\
 		  sort2.c\
+		  sort3.c\
 		  parse.c\
 		  error.c\
 		  util.c\
