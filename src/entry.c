@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 16:42:29 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:38:26 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -117,7 +117,7 @@ void		fill_entry_fields(t_entry *entry)
 	if (!entry->field_text[2])
 		error("Out of memory");
 	entry->field_size[2] = ft_strlen(entry->field_text[2]);
-	entry->field_text[3] = ft_itoa(entry->info.st_size); // !!! long
+	entry->field_text[3] = ft_itoa(entry->info.st_size);
 	if (!entry->field_text[3])
 		error("Out of memory");
 	entry->field_size[3] = ft_strlen(entry->field_text[3]);

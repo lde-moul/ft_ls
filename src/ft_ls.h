@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/12 17:49:20 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:45:56 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,8 +14,7 @@
 # define FT_LS_H
 
 # include <sys/stat.h>
-
-#include <stdio.h>
+# include <sys/types.h>
 
 typedef struct	s_field
 {
@@ -55,6 +54,8 @@ void			free_entries(t_entries *entries);
 void			fill_entry_fields(t_entry *entry);
 void			display_directory(const char *name, t_options *options);
 void			sort_entries(t_entries *entries, t_options *options);
+int				sorted_by_time(t_entry *entry1, t_entry *entry2);
+int				sorted_by_time_reverse(t_entry *entry1, t_entry *entry2);
 void			parse_arguments(int argc, char **argv,
 								t_options *options, t_entries *operands);
 void			error(char *s);

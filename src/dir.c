@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:29:32 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:40:23 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,12 +25,14 @@ static void	add_dir_entry(struct dirent *dir_entry, t_entries *entries,
 	{
 		entries->allocated *= 2;
 		new_entries = malloc_or_quit(entries->allocated * sizeof(t_entry));
-		ft_memcpy(new_entries, entries->entries, entries->number * sizeof(t_entry));
+		ft_memcpy(new_entries, entries->entries,
+					entries->number * sizeof(t_entry));
 		free(entries->entries);
 		entries->entries = new_entries;
- 	}
+	}
 	entry = &entries->entries[entries->number];
-	entry->name = malloc_or_quit(ft_strlen(parent_name) + ft_strlen(dir_entry->d_name) + 2);
+	entry->name = malloc_or_quit(ft_strlen(parent_name)
+									+ ft_strlen(dir_entry->d_name) + 2);
 	ft_strcpy(entry->name, parent_name);
 	ft_strcat(entry->name, "/");
 	ft_strcat(entry->name, dir_entry->d_name);
