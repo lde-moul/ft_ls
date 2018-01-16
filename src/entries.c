@@ -6,11 +6,12 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 18:39:17 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 15:27:19 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:06:45 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "ft_ls.h"
+#include "libft.h"
 #include <stdlib.h>
 
 static void	get_max_field_sizes(t_entries *entries, int *max_field_sizes)
@@ -44,13 +45,25 @@ void		display_entries(t_entries *entries, t_options *options)
 	int	i;
 
 	sort_entries(entries, options);
-	i = 0;
-	while (i < entries->number)
-		fill_entry_fields(&entries->entries[i++]);
-	get_max_field_sizes(entries, max_field_sizes);
-	i = 0;
-	while (i < entries->number)
-		display_entry(&entries->entries[i++], max_field_sizes);
+	if (options->long_format)
+	{
+		i = 0;
+		while (i < entries->number)
+			fill_entry_fields(&entries->entries[i++]);
+		get_max_field_sizes(entries, max_field_sizes);
+		i = 0;
+		while (i < entries->number)
+			display_entry(&entries->entries[i++], max_field_sizes);
+	}
+	else
+	{
+		i = 0;
+		while (i < entries->number)
+		{
+			ft_putendl(file_name_only(entries->entries[i].name));
+			i++;
+		}
+	}
 }
 
 void		free_entries(t_entries *entries)

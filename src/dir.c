@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 16:14:34 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:15:15 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -99,13 +99,13 @@ void		display_directory(const char *name, t_options *options)
 	blocks = 0;
 	i = 0;
 	while (i < entries.number)
+		blocks += entries.entries[i++].info.st_blocks;
+	if (options->long_format)
 	{
-		blocks += entries.entries[i].info.st_blocks;
-		i++;
+		ft_putstr("total ");
+		ft_putnbr(blocks);
+		ft_putchar('\n');
 	}
-	ft_putstr("total ");
-	ft_putnbr(blocks);
-	ft_putchar('\n');
 	display_entries(&entries, options);
 	if (options->recursive)
 		display_sub_directories(&entries, options);
