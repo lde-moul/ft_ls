@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 15:42:40 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:29:13 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -35,9 +35,9 @@ static void	display_invalid_operands(t_entries *operands, int n,
 	i = 0;
 	while (i < invalids.number)
 	{
-		ft_putstr("ft_ls: ");
-		ft_putstr(invalids.entries[i].name);
-		ft_putendl(": No such file or directory");
+		ft_putstr_fd("ft_ls: ", 2);
+		ft_putstr_fd(invalids.entries[i].name, 2);
+		ft_putendl_fd(": No such file or directory", 2);
 		free(invalids.entries[i].name);
 		i++;
 	}

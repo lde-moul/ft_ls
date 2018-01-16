@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 17:15:15 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 17:29:32 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,9 +50,9 @@ static int	load_directory(const char *name, t_entries *entries,
 	dir = opendir(name);
 	if (!dir)
 	{
-		ft_putstr("ft_ls: ");
-		ft_putstr(file_name_only(name));
-		ft_putendl(": Permission denied");
+		ft_putstr_fd("ft_ls: ", 2);
+		ft_putstr_fd(file_name_only(name), 2);
+		ft_putendl_fd(": Permission denied", 2);
 		return (0);
 	}
 	entries->number = 0;
