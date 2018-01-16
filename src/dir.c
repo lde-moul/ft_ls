@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/12 18:12:32 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 15:46:15 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,8 @@ static void	add_dir_entry(struct dirent *dir_entry, t_entries *entries,
 	entries->number++;
 }
 
-static void load_directory(const char *name, t_entries *entries)
+static void load_directory(const char *name, t_entries *entries,
+							t_options *options)
 {
 	struct dirent	*dir_entry;
 	DIR				*dir;
@@ -53,7 +54,8 @@ static void load_directory(const char *name, t_entries *entries)
 	entries->allocated = 1024;
 	entries->entries = malloc_or_quit(1024 * sizeof(t_entry));
 	while ((dir_entry = readdir(dir)))
-		add_dir_entry(dir_entry, entries, name);
+		if (dir_entry->d_name[0] != '.' || options->all)
+			add_dir_entry(dir_entry, entries, name);
 	closedir(dir);
 }
 
@@ -68,8 +70,7 @@ static void	display_sub_directories(t_entries *entries, t_options *options)
 		if ((entries->entries[i].info.st_mode & S_IFMT) == S_IFDIR)
 		{
 			file_name = file_name_only(entries->entries[i].name);
-			if (ft_strcmp(file_name, ".") && ft_strcmp(file_name, "..")
-			&& (file_name[0] != '.' || options->all))
+			if (ft_strcmp(file_name, ".") && ft_strcmp(file_name, ".."))
 				display_directory(entries->entries[i].name, options);
 		}
 		i++;
@@ -82,7 +83,7 @@ void		display_directory(const char *name, t_options *options)
 	int			blocks;
 	int			i;
 
-	load_directory(name, &entries);
+	load_directory(name, &entries, options);
 	if (options->not_first)
 		ft_putchar('\n');
 	options->not_first = 1;

@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 18:39:17 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/12 18:50:53 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 15:27:19 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -50,11 +50,7 @@ void		display_entries(t_entries *entries, t_options *options)
 	get_max_field_sizes(entries, max_field_sizes);
 	i = 0;
 	while (i < entries->number)
-	{
-		if (file_name_only(entries->entries[i].name)[0] != '.' || options->all)
-			display_entry(&entries->entries[i], max_field_sizes);
-		i++;
-	}
+		display_entry(&entries->entries[i++], max_field_sizes);
 }
 
 void		free_entries(t_entries *entries)
