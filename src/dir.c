@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 15:46:15 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/01/16 16:14:34 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -41,7 +41,7 @@ static void	add_dir_entry(struct dirent *dir_entry, t_entries *entries,
 	entries->number++;
 }
 
-static void load_directory(const char *name, t_entries *entries,
+static int	load_directory(const char *name, t_entries *entries,
 							t_options *options)
 {
 	struct dirent	*dir_entry;
@@ -49,7 +49,12 @@ static void load_directory(const char *name, t_entries *entries,
 
 	dir = opendir(name);
 	if (!dir)
-		error("Can't open directory");
+	{
+		ft_putstr("ft_ls: ");
+		ft_putstr(file_name_only(name));
+		ft_putendl(": Permission denied");
+		return (0);
+	}
 	entries->number = 0;
 	entries->allocated = 1024;
 	entries->entries = malloc_or_quit(1024 * sizeof(t_entry));
@@ -57,6 +62,7 @@ static void load_directory(const char *name, t_entries *entries,
 		if (dir_entry->d_name[0] != '.' || options->all)
 			add_dir_entry(dir_entry, entries, name);
 	closedir(dir);
+	return (1);
 }
 
 static void	display_sub_directories(t_entries *entries, t_options *options)
@@ -83,12 +89,13 @@ void		display_directory(const char *name, t_options *options)
 	int			blocks;
 	int			i;
 
-	load_directory(name, &entries, options);
 	if (options->not_first)
 		ft_putchar('\n');
 	options->not_first = 1;
 	ft_putstr(name);
 	ft_putendl(":");
+	if (!load_directory(name, &entries, options))
+		return ;
 	blocks = 0;
 	i = 0;
 	while (i < entries.number)
