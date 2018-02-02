@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 19:35:38 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:01:48 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,7 +19,7 @@ static void	usage(char c)
 	ft_putstr_fd("ft_ls: illegal option -- ", 2);
 	ft_putchar_fd(c, 2);
 	ft_putchar_fd('\n', 2);
-	ft_putendl_fd("usage: ft_ls [-RSUaclrt] [file ...]", 2);
+	ft_putendl_fd("usage: ft_ls [-ARSUTaclrt] [file ...]", 2);
 	exit(1);
 }
 
