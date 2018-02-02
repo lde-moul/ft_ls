@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 20:11:23 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:39:09 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -88,7 +88,8 @@ static void	display_directory_operands(t_entries *operands, int n,
 	i = 0;
 	while (i < directories.number)
 	{
-		display_directory(directories.entries[i].name, options);
+		display_directory(directories.entries[i].name, options,
+							operands->number != 1);
 		free(directories.entries[i].name);
 		i++;
 	}

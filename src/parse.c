@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 16:58:56 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/02/02 15:01:48 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:35:38 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -80,7 +80,7 @@ void		parse_arguments(int argc, char **argv,
 	operands->number = (argc - num_options - 1);
 	if (operands->number == 0)
 	{
-		display_directory(".", options);
+		display_directory(".", options, 0);
 		return ;
 	}
 	operands->entries = malloc_or_quit(operands->number * sizeof(t_entry));

@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 20:07:43 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/02/02 15:36:27 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -44,11 +44,16 @@ static void	add_dir_entry(struct dirent *dir_entry, t_entries *entries,
 }
 
 static int	load_directory(const char *name, t_entries *entries,
-							t_options *options)
+							t_options *options, int named)
 {
 	struct dirent	*dir_entry;
 	DIR				*dir;
 
+	if (named)
+	{
+		ft_putstr(name);
+		ft_putendl(":");
+	}
 	dir = opendir(name);
 	if (!dir)
 	{
@@ -79,13 +84,13 @@ static void	display_sub_directories(t_entries *entries, t_options *options)
 		{
 			file_name = file_name_only(entries->entries[i].name);
 			if (ft_strcmp(file_name, ".") && ft_strcmp(file_name, ".."))
-				display_directory(entries->entries[i].name, options);
+				display_directory(entries->entries[i].name, options, 1);
 		}
 		i++;
 	}
 }
 
-void		display_directory(const char *name, t_options *options)
+void		display_directory(const char *name, t_options *options, int named)
 {
 	t_entries	entries;
 	int			blocks;
@@ -94,9 +99,7 @@ void		display_directory(const char *name, t_options *options)
 	if (options->not_first)
 		ft_putchar('\n');
 	options->not_first = 1;
-	ft_putstr(name);
-	ft_putendl(":");
-	if (!load_directory(name, &entries, options))
+	if (!load_directory(name, &entries, options, named))
 		return ;
 	blocks = 0;
 	i = 0;
