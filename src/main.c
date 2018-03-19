@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/12 17:13:25 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/02/02 15:39:09 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/03/19 19:42:52 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -64,7 +64,7 @@ static void	display_file_operands(t_entries *operands, int n,
 		&& name_displayable(file_name_only(operands->entries[i].name), options))
 			files.entries[j++] = operands->entries[i];
 	display_entries(&files, options);
-	free_entries(&files);
+	free_entries(&files, options);
 }
 
 static void	display_directory_operands(t_entries *operands, int n,

@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/02/02 15:35:03 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/03/19 19:40:33 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -55,7 +55,7 @@ typedef struct	s_options
 
 void			display_entry(t_entry *entry, int *max_field_sizes);
 void			display_entries(t_entries *entries, t_options *options);
-void			free_entries(t_entries *entries);
+void			free_entries(t_entries *entries, t_options *options);
 void			fill_entry_fields(t_entry *entry, t_options *options);
 void			display_directory(const char *name, t_options *options,
 									int named);

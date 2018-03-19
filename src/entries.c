@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/10 18:39:17 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 18:48:06 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/03/19 19:41:17 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -66,7 +66,7 @@ void		display_entries(t_entries *entries, t_options *options)
 	}
 }
 
-void		free_entries(t_entries *entries)
+void		free_entries(t_entries *entries, t_options *options)
 {
 	int	i;
 	int	j;
@@ -75,11 +75,14 @@ void		free_entries(t_entries *entries)
 	while (i < entries->number)
 	{
 		free(entries->entries[i].name);
-		j = 0;
-		while (j < 6)
+		if (options->long_format)
 		{
-			free(entries->entries[i].field_text[j]);
-			j++;
+			j = 0;
+			while (j < 6)
+			{
+				free(entries->entries[i].field_text[j]);
+				j++;
+			}
 		}
 		i++;
 	}

@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:20:35 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/02/02 15:36:27 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/03/19 19:41:54 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -114,5 +114,5 @@ void		display_directory(const char *name, t_options *options, int named)
 	display_entries(&entries, options);
 	if (options->recursive)
 		display_sub_directories(&entries, options);
-	free_entries(&entries);
+	free_entries(&entries, options);
 }
