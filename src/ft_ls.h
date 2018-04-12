@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/01/09 11:59:48 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/03/19 19:40:33 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:55:03 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -68,6 +68,7 @@ void			display_spaces(int n);
 void			display_entry_link_target(t_entry *entry);
 const char		*file_name_only(const char *path);
 int				name_displayable(const char *name, t_options *options);
+void			fill_entry_size_or_device_field(t_entry *entry);
 
 int				sorted_by_mtime(t_entry *entry1, t_entry *entry2);
 int				sorted_by_mtime_reverse(t_entry *entry1, t_entry *entry2);

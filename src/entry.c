@@ -6,7 +6,7 @@
 /*   By: lde-moul <lde-moul@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2017/12/14 17:07:09 by lde-moul          #+#    #+#             */
-/*   Updated: 2018/01/16 19:18:18 by lde-moul         ###   ########.fr       */
+/*   Updated: 2018/04/12 17:54:17 by lde-moul         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -136,9 +136,6 @@ void			fill_entry_fields(t_entry *entry, t_options *options)
 	if (!entry->field_text[2])
 		error("Out of memory");
 	entry->field_size[2] = ft_strlen(entry->field_text[2]);
-	entry->field_text[3] = ft_itoa(entry->info.st_size);
-	if (!entry->field_text[3])
-		error("Out of memory");
-	entry->field_size[3] = ft_strlen(entry->field_text[3]);
+	fill_entry_size_or_device_field(entry);
 	fill_entry_time_field(entry, options);
 }
